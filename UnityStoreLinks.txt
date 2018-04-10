@@ -1,5 +1,69 @@
 https://assetstore.unity.com/packages/3d/characters/necromancer-19340
 https://assetstore.unity.com/packages/3d/characters/animals/golden-tiger-55797
-https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy-monster-skeleton-35635
 https://assetstore.unity.com/packages/3d/characters/creatures/dungeon-skeletons-demo-71087
 https://assetstore.unity.com/packages/3d/characters/creatures/free-fantasy-spider-10104
+
+
+
+# Esqueleto do video (cunde nicanor)
+Stand
+Idle
+Walk
+Run
+Attack
+Skill
+Damage
+Knockback
+Death
+https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy-monster-skeleton-35635
+
+
+
+#Chorbita con varias animacións (non vale moito a pena a verdade)
+Idle
+Walk
+Run
+CombatRun(aiming)
+CombatWalk(aiming)
+CombatIdle(aiming)
+Attack
+Pain
+DeathA
+DeathB
+DeathC
+https://assetstore.unity.com/packages/3d/characters/humanoids/female-warrior-princess-44041
+
+
+# Chorb@ samurai (moooe guapo, pero non se poden ver as animacións hai que probalo)
+Idle
+Walk
+Run
+Attack
+https://assetstore.unity.com/packages/3d/characters/humanoids/red-samurai-4331
+
+
+# Chorbo Espartano 11 animacións
+ 0-100 : Waiting(idle)
+- 101-137 : Walking
+- 138-160 : Running
+- 161-183 : Charging
+- 184-234 : Waiting for Battle
+- 235-270 : Resist with the Shield
+- 271-352 : Victory
+- 353-429 : Salute
+- 430-500 : Dying (Normal)
+- 501-566 : Dying Hard (Spin)
+- 567-602 : Swing Sword (Attack)
+https://assetstore.unity.com/packages/3d/characters/humanoids/animated-spartan-king-1735
+
+
+# Generador de personajes (creo)
+# pero aprece que é para un fps #sad
+https://assetstore.unity.com/packages/3d/characters/humanoids/mcs-male-45805
+
+
+# Minotauro (cutre as fuck)
+# Normal que sexa free
+https://assetstore.unity.com/packages/3d/characters/humanoids/minotaur-62219
+
+
