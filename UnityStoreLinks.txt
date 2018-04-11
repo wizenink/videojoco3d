@@ -3,6 +3,10 @@ https://assetstore.unity.com/packages/3d/characters/animals/golden-tiger-55797
 https://assetstore.unity.com/packages/3d/characters/creatures/dungeon-skeletons-demo-71087
 https://assetstore.unity.com/packages/3d/characters/creatures/free-fantasy-spider-10104
 
+https://assetstore.unity.com/packages/3d/characters/humanoids/goblin-12131
+https://assetstore.unity.com/packages/3d/characters/humanoids/mini-legion-rock-golem-handpainted-94707
+https://assetstore.unity.com/packages/3d/characters/humanoids/the-earthborn-troll-13541
+
 
 
 # Esqueleto do video (cunde nicanor)
