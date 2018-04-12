@@ -23,13 +23,12 @@ public abstract class CharacterState {
 
     public virtual void Attack()
     {
-        animator.SetBool("attack", true); // Cambia el estado de la variable de control de animación
         character.State = new AttackState(animator, character); // Cambia el estado del personaje
     }
     
     public virtual void Run()
     {
-        character.State = new RunState(animator, character);
+        character.State = new RunState(animator, character); // Cambia el estado del personaje
     }
 
     public virtual void SetTarget(Character target)
@@ -39,7 +38,7 @@ public abstract class CharacterState {
     
     public virtual void Stand()
     {
-        character.State = new StandState(animator, character);
+        character.State = new StandState(animator, character); // Cambia el estado del personaje
     }
 
     public virtual void ReleaseTarget()
@@ -49,6 +48,6 @@ public abstract class CharacterState {
 
     public virtual void Walk()
     {
-        character.State = new WalkState(animator, character);
+        character.State = new WalkState(animator, character); // Cambia el estado del personaje
     }
 }

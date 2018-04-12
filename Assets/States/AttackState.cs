@@ -7,6 +7,7 @@ public class AttackState : CharacterState
     public AttackState(Animator animator, Character character) : base(animator, character)
     {
         character.Speed = 0.0f; // En la animación de atacar el personaje no se puede mover
+        animator.SetBool("attack", true); // Cambia el estado de la variable de control de animación
     }
 
     // Métodos NO Permitidos por el estado //
