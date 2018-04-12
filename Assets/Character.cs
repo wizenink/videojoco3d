@@ -68,10 +68,10 @@ public class Character : MonoBehaviour {
         }
 
         // Aplicación de la velocidad del personaje //
-        // Esto está mal el personaje necesita movimiento más complejo :)
+        // Esto está mal el personaje necesita movimiento más complejo y usando Time.deltaTime :)
 
-        transform.Translate(x*Speed* Time.deltaTime, 0, 0);
-        transform.Translate(0, 0, z*Speed * Time.deltaTime);
+        transform.Translate(x*Speed, 0, 0);
+        transform.Translate(0, 0, z*Speed);
     }
 
     // Getters and Setters de C# //
