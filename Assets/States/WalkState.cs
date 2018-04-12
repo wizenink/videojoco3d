@@ -11,10 +11,14 @@ public class WalkState : CharacterState
         animator.SetBool("isMoving", true); // Activar la variable isMoving en el controlador de animaciones
     }
 
-    // Métodos NO Permitidos por el estado
+    // Métodos NO Permitidos por el estado //
+    // Aqui se hace override de las acciones que el estado no debería responder dejandolas sin implementación
+
     public override void Walk() { }
 
-    // Métodos Permitidos por el estado
+
+    // Métodos Permitidos por el estado //
+
     public override void FollowPath(string path)
     {
         throw new System.NotImplementedException();

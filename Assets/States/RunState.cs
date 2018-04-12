@@ -13,6 +13,7 @@ public class RunState : CharacterState
     }
 
     // Métodos NO Permitidos por el estado //
+    // Aqui se hace override de las acciones que el estado no debería responder dejandolas sin implementación
 
     public override void Run() { }
 
