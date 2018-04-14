@@ -67,3 +67,7 @@ sysinfo.txt
 .Trashes
 [Tt]humbs.db
 [Dd]esktop.ini
+
+# Dia temp files
+*.dia~
+*.dia.autosave
