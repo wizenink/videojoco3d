@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-    private Animator animator; // Clase de control de los estados de las animaciones del character
-    private float speed; // Velocidad actual del personaje
-    private CharacterState state; // Estado actual del personaje
-    private bool shiftIsPressed; // Indica si el shift esta pulsado
+    private Animator animator; // Control class for animation states
+    private float speed; // Current speed
+    private CharacterState state; // Current CharacterState
+    private bool shiftIsPressed; // :)
 
 
-    /// Campos Visibles desde el editor
+    // Editor Variables //
     [SerializeField]
-    private float walkSpeed; // Define la velocidad al caminar (Se define en la interfaz de Unity)
+    [Tooltip("Number of hits to kill the character")]
+    private int healthPoints;
+
     [SerializeField]
-    private float runningSpeed; // Define la velocidad al correr (Se define en la interfaz de Unity)
+    [Tooltip("Character walk speed")]
+    private float walkSpeed;
+
+    [SerializeField]
+    [Tooltip("Character running speed")]
+    private float runningSpeed;
+
+    [SerializeField]
+    [Tooltip("Number of hits to produce knockback")]
+    private int comboedHits;
+
+    // ---------------- //
 
     void Start()
     {
-        animator = GetComponent<Animator>(); // Inicialización del controlador de animaciones
-        state = new StandState(animator, this); // Estado inicial
-        shiftIsPressed = false; // Control del estado del shift, esto deberia gestionarse en una clase aparte
+        animator = GetComponent<Animator>();
+        state = new StandState(animator, this);
+        shiftIsPressed = false;
     }
 
 
@@ -62,9 +75,15 @@ public class Character : MonoBehaviour {
             state.Stand();
         }
 
+        // Debug and test code (will be removed) //
         if (Input.GetKeyDown(KeyCode.E)) 
         {
             Debug.Log(state);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            state.GetHit();
         }
 
         // Aplicación de la velocidad del personaje //
@@ -72,6 +91,11 @@ public class Character : MonoBehaviour {
 
         transform.Translate(x*Speed, 0, 0);
         transform.Translate(0, 0, z*Speed);
+    }
+
+    public void GetHit()
+    {
+        state.GetHit();
     }
 
     // Getters and Setters de C# //
@@ -120,4 +144,29 @@ public class Character : MonoBehaviour {
 
     }
 
+    public int ComboedHits
+    {
+        get
+        {
+            return comboedHits;
+        }
+
+        set
+        {
+            comboedHits = value;
+        }
+    }
+
+    public int HealthPoints
+    {
+        get
+        {
+            return healthPoints;
+        }
+
+        set
+        {
+            healthPoints = value;
+        }
+    }
 }

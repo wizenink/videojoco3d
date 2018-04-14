@@ -16,9 +16,9 @@ public class AttackBehaviour : StateMachineBehaviour {
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        animator.SetBool("attack", false); // Animación de ataque acabada
-        Character character = animator.GetComponent<Character>(); // Obtener el objeto Character del animator recibido
-        character.State = new StandState(animator, character); // Cambiar el character al estado StandState
+        animator.SetBool("attack", false); // Attack animation ended
+        Character character = animator.GetComponent<Character>(); // Getting the character
+        character.State = new StandState(animator, character); // Change character state to default state
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -7,17 +7,16 @@ public class StandState : CharacterState
     
     public StandState(Animator animator, Character character) : base(animator, character)
     {
-        character.Speed = 0.0f; // Al inicio del estado cambia la velocidad del character
-        animator.SetBool("isMoving", false); // Cambio de la variable isMoving en el controlador de animación
+        character.Speed = 0.0f; // You are not moving
+        animator.SetBool("isMoving", false); // Set false to activate the animation
     }
 
-    // Métodos NO Permitidos por el estado //
-    // Aqui se hace override de las acciones que el estado no debería responder dejandolas sin implementación
+    // Methods where the state does nothing //
 
     public override void Stand() { }
 
 
-    // Métodos NO Permitidos por el estado //
+    // Methods where the state changes default behaviour //
 
     public override void FollowPath(string path)
     {

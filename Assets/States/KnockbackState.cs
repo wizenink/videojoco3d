@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : CharacterState
-{
-    public AttackState(Animator animator, Character character) : base(animator, character)
+public class KnockbackState : CharacterState {
+
+    public KnockbackState(Animator animator, Character character) : base(animator, character)
     {
-        character.Speed = 0.0f; // You cant move while attacking
-        animator.SetBool("attack", true); // Set true to activate the animation
+        character.Speed = 0.0f; // You cant move while getting damage
+        animator.SetBool("knockedback", true); // Set true to activate the animation
     }
 
     // Methods where the state does nothing //
@@ -16,6 +16,7 @@ public class AttackState : CharacterState
     public override void Walk() { }
     public override void Run() { }
     public override void Stand() { }
+    public override void GetHit() { }
 
     // Methods where the state changes default behaviour //
 
@@ -28,5 +29,4 @@ public class AttackState : CharacterState
     {
         throw new System.NotImplementedException();
     }
-
 }

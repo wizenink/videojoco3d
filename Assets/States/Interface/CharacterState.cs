@@ -14,21 +14,22 @@ public abstract class CharacterState {
         this.character = character;
     }
 
-    // Métodos Abstractos //
+    // Abstract Methods //
 
     public abstract void FollowPath(string path);
     public abstract void ScapeFromTarget();
 
-    // Métodos Virtuales //
+    // Virtual Methods //
+    // Default behaviour is "change the player state"
 
     public virtual void Attack()
     {
-        character.State = new AttackState(animator, character); // Cambia el estado del personaje
+        character.State = new AttackState(animator, character); 
     }
-    
-    public virtual void Run()
+
+    public virtual void GetHit()
     {
-        character.State = new RunState(animator, character); // Cambia el estado del personaje
+        character.State = new DamageState(animator, character);
     }
 
     public virtual void SetTarget(Character target)
@@ -38,7 +39,7 @@ public abstract class CharacterState {
     
     public virtual void Stand()
     {
-        character.State = new StandState(animator, character); // Cambia el estado del personaje
+        character.State = new StandState(animator, character);
     }
 
     public virtual void ReleaseTarget()
@@ -46,8 +47,13 @@ public abstract class CharacterState {
         this.target = null;
     }
 
+    public virtual void Run()
+    {
+        character.State = new RunState(animator, character);
+    }
+
     public virtual void Walk()
     {
-        character.State = new WalkState(animator, character); // Cambia el estado del personaje
+        character.State = new WalkState(animator, character);
     }
 }

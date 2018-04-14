@@ -6,18 +6,17 @@ public class WalkState : CharacterState
 {
     public WalkState(Animator animator, Character player) : base(animator, player)
     {
-        player.Speed = player.WalkSpeed; // Cambio de la velocidad a la de correr
-        animator.SetBool("running", false); // Desactivar la variable running en el controlador de animaciones
-        animator.SetBool("isMoving", true); // Activar la variable isMoving en el controlador de animaciones
+        player.Speed = player.WalkSpeed; // Change speed to character walking speed
+        animator.SetBool("running", false); // Set false to activate the animation
+        animator.SetBool("isMoving", true); // Set true to activate the animation
     }
 
-    // Métodos NO Permitidos por el estado //
-    // Aqui se hace override de las acciones que el estado no debería responder dejandolas sin implementación
+    // Methods where the state does nothing //
 
     public override void Walk() { }
 
 
-    // Métodos Permitidos por el estado //
+    // Methods where the state changes default behaviour //
 
     public override void FollowPath(string path)
     {

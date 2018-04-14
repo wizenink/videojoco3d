@@ -6,18 +6,17 @@ public class RunState : CharacterState
 {
     public RunState(Animator animator, Character character) : base(animator, character)
     {
-        character.Speed = character.RunningSpeed; // Cambio de la velocidad a la de correr
-        animator.SetBool("running", true); // Activar la variable running en el controlador de animaciones
-        animator.SetBool("isMoving", true); // Activar la variable isMoving en el controlador de animaciones
+        character.Speed = character.RunningSpeed; // Change speed to character running speed
+        animator.SetBool("running", true); // Set true to activate the animation
+        animator.SetBool("isMoving", true); // Set true to activate the animation
 
     }
 
-    // Métodos NO Permitidos por el estado //
-    // Aqui se hace override de las acciones que el estado no debería responder dejandolas sin implementación
+    // Methods where the state does nothing //
 
     public override void Run() { }
 
-    // Métodos Permitidos por el estado //
+    // Methods where the state changes default behaviour //
 
     public override void ScapeFromTarget()
     {
