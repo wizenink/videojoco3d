@@ -56,4 +56,9 @@ public abstract class CharacterState {
     {
         character.State = new WalkState(animator, character);
     }
+
+    public virtual void Dead()
+    {
+        character.State = new DeadState(animator, character);
+    }
 }

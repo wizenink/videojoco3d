@@ -86,6 +86,11 @@ public class Character : MonoBehaviour {
             state.GetHit();
         }
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            state.Dead();
+        }
+
         // Aplicación de la velocidad del personaje //
         // Esto está mal el personaje necesita movimiento más complejo y usando Time.deltaTime :)
 

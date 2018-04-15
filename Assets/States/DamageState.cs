@@ -10,7 +10,7 @@ public class DamageState : CharacterState
     public DamageState(Animator animator, Character character) : base(animator, character)
     {
         character.Speed = 0.0f; // You cant move while getting damage
-        animator.SetBool("damaged", true); // Set true to activate the animation
+        SetAnimationParams();
         comboedHitsCounter = 1;
         character.HealthPoints --;
         animationPlaying = 1;
@@ -47,7 +47,7 @@ public class DamageState : CharacterState
         throw new System.NotImplementedException();
     }
 
-    // own Methods //
+    // Own Methods //
 
     // this method controls damage animations being played
     // is called when a damage animation is finished
@@ -59,6 +59,14 @@ public class DamageState : CharacterState
         {
             character.State = new StandState(animator, character);
         }
+    }
+
+    // this method resets animation params to prevent unexpected behaviors
+    private void SetAnimationParams()
+    {
+        animator.SetBool("damaged", true);
+        animator.SetBool("isMoving", false);
+        animator.SetBool("running", false);
     }
 
     public int ComboedHitsCounter
