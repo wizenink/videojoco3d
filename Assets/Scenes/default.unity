@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 39540527}
   - component: {fileID: 39540526}
   - component: {fileID: 39540529}
+  - component: {fileID: 39540530}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -201,12 +202,35 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39540524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca00d3ee04b435d4dbefe5d16975cce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1366012518}
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &39540530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39540524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad809389fec3401458937c48453b6ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulder: {fileID: 0}
+  cam: {fileID: 39540528}
+  target: {fileID: 1366012520}
+  distance: 5
+  xSpeed: 60
+  ySpeed: 60
+  yMinLimit: -20
+  yMaxLimit: 80
+  distanceMin: 0.5
+  distanceMax: 15
+  parriba: 1.43
 --- !u!1 &428836875
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +296,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 428836875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -250, y: 0, z: -250}
+  m_LocalPosition: {x: -174.3, y: 0, z: -63.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -405,6 +429,10 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
   m_PrefabInternal: {fileID: 1335269769}
+--- !u!4 &1366012520 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+  m_PrefabInternal: {fileID: 1335269769}
 --- !u!114 &1366012521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,8 +444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31e16d7a936c22428d7f57ca8a84c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 39540525}
+  cameraPosition: {fileID: 39540524}
   healthPoints: 0
-  walkSpeed: 1
-  runningSpeed: 2
+  walkSpeed: 1.5
+  runningSpeed: 4
   comboedHits: 3
