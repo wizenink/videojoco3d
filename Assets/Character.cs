@@ -9,6 +9,10 @@ public class Character : MonoBehaviour {
     private CharacterState state; // Current CharacterState
     private bool shiftIsPressed; // :)
 
+    private float rotationSpeed;
+    public GameObject cameraPosition;
+    private Vector3 directionVector;
+    private float angle;
 
     // Editor Variables //
     [SerializeField]
@@ -34,6 +38,8 @@ public class Character : MonoBehaviour {
         animator = GetComponent<Animator>();
         state = new StandState(animator, this);
         shiftIsPressed = false;
+        rotationSpeed = 0;
+        directionVector = Vector3.zero;
     }
 
 
@@ -42,12 +48,57 @@ public class Character : MonoBehaviour {
 
         // Lógica de control del personaje, esto deberia gestionarse en una clase aparte //
 
-        var x = Input.GetAxis("Horizontal");
-        var z = Input.GetAxis("Vertical");
+        //var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+        //var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+
+        Vector3 direction = Vector3.ProjectOnPlane(this.transform.position - cameraPosition.transform.position, transform.TransformDirection(Vector3.up));
         
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log(direction);
+            directionVector = Vector3.Cross(direction, Vector3.up);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            directionVector = direction;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            directionVector = -direction;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            float alpha = 90f;
+
+            directionVector = Vector3.Cross(direction, Vector3.down);
+        }
+        Debug.Log(GameObject.Find("Main Camera").transform.position);
+        Debug.Log(Camera.main.GetComponent<Transform>().position);
+        Debug.DrawLine(this.transform.position, this.transform.position + (directionVector * 100), Color.red);
+        Debug.DrawLine(this.transform.position, this.transform.position-direction*100, Color.red);
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            directionVector = Vector3.zero;
+            rotationSpeed = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            directionVector = Vector3.zero;
+            rotationSpeed = 0;
+        }
         if (Input.GetKeyDown("space"))
         {
             state.Attack();
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            directionVector = Vector3.zero;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            directionVector = Vector3.zero;
         }
 
         if (Input.GetKeyDown("left shift"))
@@ -60,23 +111,23 @@ public class Character : MonoBehaviour {
             shiftIsPressed = false;
         }
 
-        if (shiftIsPressed && (x != 0 || z != 0))
+        if (shiftIsPressed && directionVector != Vector3.zero)
         {
             state.Run();
         }
 
-        if (!shiftIsPressed && (x != 0 || z != 0))
+        if (!shiftIsPressed && directionVector != Vector3.zero)
         {
             state.Walk();
         }
 
-        if (x==0 && z == 0)
+        if (directionVector == Vector3.zero)
         {
             state.Stand();
         }
 
         // Debug and test code (will be removed) //
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log(state);
         }
@@ -91,11 +142,45 @@ public class Character : MonoBehaviour {
             state.Dead();
         }
 
+        Transform trans = GetComponent<Transform>();
+
+        
+        if (directionVector != Vector3.zero)
+        {
+            angle = Vector3.SignedAngle(this.transform.TransformDirection(Vector3.forward), directionVector, Vector3.up);
+        } else
+        {
+            angle = 0f;
+        }
+
+        if (angle > -5 | angle < 5)
+        {
+            rotationSpeed = 3*angle;
+        }
+        else
+        {
+            rotationSpeed = 0;
+        }
+        
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            rotationSpeed = 400;
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            rotationSpeed = -400;
+        }
+        else if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Q))
+        {
+            rotationSpeed = 0;
+        }
+
         // Aplicación de la velocidad del personaje //
         // Esto está mal el personaje necesita movimiento más complejo y usando Time.deltaTime :)
 
-        transform.Translate(x*Speed, 0, 0);
-        transform.Translate(0, 0, z*Speed);
+        trans.Translate(0, 0, 1* Speed* Time.deltaTime);
+        trans.Rotate(0, Time.deltaTime * rotationSpeed, 0);
     }
 
     public void GetHit()

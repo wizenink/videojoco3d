@@ -38,6 +38,11 @@ public class OTSCamera : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        //Debug.Log(this.transform.position);
+    }
+
     void LateUpdate()
     {
         if (target)
@@ -61,6 +66,7 @@ public class OTSCamera : MonoBehaviour {
 
             transform.rotation = rotation;
             transform.position = position;
+            Debug.Log(target.position);
         }
     }
 
