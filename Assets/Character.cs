@@ -52,54 +52,24 @@ public class Character : MonoBehaviour {
         //var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
         Vector3 direction = Vector3.ProjectOnPlane(this.transform.position - cameraPosition.transform.position, transform.TransformDirection(Vector3.up));
-        
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log(direction);
-            directionVector = Vector3.Cross(direction, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            directionVector = direction;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            directionVector = -direction;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            float alpha = 90f;
 
-            directionVector = Vector3.Cross(direction, Vector3.down);
-        }
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(h, 0, v);
+        
+        Vector3 directionVectorH = Vector3.Cross(direction, Vector3.down*h);
+        Vector3 directionVectorV = direction*v;
+
+        directionVector = directionVectorH + directionVectorV;
+
+
         Debug.Log(GameObject.Find("Main Camera").transform.position);
         Debug.Log(Camera.main.GetComponent<Transform>().position);
         Debug.DrawLine(this.transform.position, this.transform.position + (directionVector * 100), Color.red);
         Debug.DrawLine(this.transform.position, this.transform.position-direction*100, Color.red);
 
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            directionVector = Vector3.zero;
-            rotationSpeed = 0;
-        }
 
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            directionVector = Vector3.zero;
-            rotationSpeed = 0;
-        }
-        if (Input.GetKeyDown("space"))
-        {
-            state.Attack();
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            directionVector = Vector3.zero;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            directionVector = Vector3.zero;
-        }
 
         if (Input.GetKeyDown("left shift"))
         {
@@ -144,7 +114,6 @@ public class Character : MonoBehaviour {
 
         Transform trans = GetComponent<Transform>();
 
-        
         if (directionVector != Vector3.zero)
         {
             angle = Vector3.SignedAngle(this.transform.TransformDirection(Vector3.forward), directionVector, Vector3.up);
@@ -158,20 +127,6 @@ public class Character : MonoBehaviour {
             rotationSpeed = 3*angle;
         }
         else
-        {
-            rotationSpeed = 0;
-        }
-        
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            rotationSpeed = 400;
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            rotationSpeed = -400;
-        }
-        else if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Q))
         {
             rotationSpeed = 0;
         }
