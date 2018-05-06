@@ -18,8 +18,6 @@ public class OTSCamera : MonoBehaviour {
     public float distanceMin = .5f;
     public float distanceMax = 15f;
 
-    public float parriba = 0;
-
     private Rigidbody rigidbody2;
 
     float x = 0.0f;
@@ -59,7 +57,7 @@ public class OTSCamera : MonoBehaviour {
                 distance -= hit.distance;
             }
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-            Vector3 position = rotation * negDistance + target.position + Vector3.up * parriba;
+            Vector3 position = rotation * negDistance + target.position;
 
             transform.rotation = rotation;
             transform.position = position;
