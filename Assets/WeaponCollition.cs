@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class WeaponCollition : MonoBehaviour {
 
+    public GameObject parent;
+
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SendMessage("GetHit");
+
+        if (parent != collision.gameObject)
+            collision.gameObject.SendMessage("GetHit");
+
     }
     private void OnCollisionStay(Collision collision)
     {
