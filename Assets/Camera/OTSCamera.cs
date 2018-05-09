@@ -22,6 +22,10 @@ public class OTSCamera : MonoBehaviour {
 
     private Rigidbody rigidbody2;
 
+    [Header("Raycast matrix properties")]
+    public float offset;
+    public int number;
+
     float x = 0.0f;
     float y = 0.0f;
 
@@ -42,6 +46,9 @@ public class OTSCamera : MonoBehaviour {
 
     void LateUpdate()
     {
+        int layer = LayerMask.NameToLayer("Player");
+        int layermask = layer << 8;
+        layermask = ~layermask;
         if (target)
         {
             x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
@@ -54,10 +61,18 @@ public class OTSCamera : MonoBehaviour {
             distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
 
             RaycastHit hit;
-            if (Physics.Linecast(target.position, transform.position, out hit))
-            {
-                distance -= hit.distance;
-            }
+
+            Vector3 rayPosition = transform.position;
+            bool didHit = Physics.Linecast(target.position,rayPosition, out hit);
+            //Debug.Log(layer);
+            if (didHit)
+                {
+                    //Debug.Log(layermask);
+                    Debug.Log("Raycast collided");
+                    distance -= hit.distance;
+           
+                }
+            
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
             Vector3 position = rotation * negDistance + target.position + Vector3.up * parriba;
 
