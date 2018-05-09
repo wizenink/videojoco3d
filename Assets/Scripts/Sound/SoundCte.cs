@@ -52,7 +52,7 @@ public static class SoundConstants{
 
 
 	public AudioClip loadAudioClip (String constantSoundName){
-		return = Resources.Load<AudioClip>("Sound/"+constantSoundName);
+		return Resources.Load<AudioClip>("Sound/"+constantSoundName);
 	}
 }
 
