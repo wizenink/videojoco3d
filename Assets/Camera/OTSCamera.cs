@@ -69,7 +69,7 @@ public class OTSCamera : MonoBehaviour {
                 {
                     //Debug.Log(layermask);
                     Debug.Log("Raycast collided");
-                    distance -= hit.distance;
+                    //distance -= hit.distance;
            
                 }
             

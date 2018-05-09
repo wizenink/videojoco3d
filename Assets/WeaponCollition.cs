@@ -9,7 +9,7 @@ public class WeaponCollition : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (parent != collision.gameObject)
+        if (parent != collision.gameObject && (parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
             collision.gameObject.SendMessage("GetHit");
 
     }

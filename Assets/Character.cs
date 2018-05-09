@@ -37,7 +37,8 @@ public class Character : MonoBehaviour {
 
     private void Update()
     {
-
+        if (this.gameObject.name == "Enemy")
+            Debug.Log(this.state);
        
     }
 
