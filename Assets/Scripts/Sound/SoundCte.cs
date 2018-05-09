@@ -53,7 +53,7 @@ public static class SoundConstants{
 	public const string MUSICA6_SOUND = "Music/Music6.mp3";
 
 
-	public AudioClip loadAudioClip (string constantSoundName){
+	public static AudioClip loadAudioClip (string constantSoundName){
 		return Resources.Load<AudioClip>("Sound/"+constantSoundName);
 	}
 }
