@@ -12,6 +12,9 @@ public class Unit : MonoBehaviour
     CharacterState state;
     int targetIndex;
     Vector3 lastPos;
+    int counter;
+    private CharacterController controller;
+
 
     private void Awake()
     {
@@ -21,20 +24,24 @@ public class Unit : MonoBehaviour
     {
         character = GetComponent<Character>();
         PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-    }
+        counter = 0;
+        controller = GetComponent<CharacterController>();
 
-    private void FixedUpdate()
-    {
-        Vector3 targetPos = target.position;
-        if (lastPos != targetPos)
-            PathRequestManager.RequestPath(transform.position, targetPos, OnPathFound);
-
-        lastPos = targetPos;
     }
 
     private void Update()
     {
-
+        if (counter == 10) {
+            Vector3 targetPos = target.position;
+            if (lastPos != targetPos)
+            {
+                PathRequestManager.RequestPath(transform.position, targetPos, OnPathFound);
+                Debug.Log("cheguei aqui");
+            }
+            lastPos = targetPos;
+            counter = 0;
+        }
+        counter++;
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -50,15 +57,21 @@ public class Unit : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        Vector3 currentWaypoint = path[0];
+
+        Vector3 currentWaypoint = target.position;
+        if (path.Length != 0)
+            currentWaypoint = path[0];
+        
+
         while (true)
         {
+            
             if (transform.position == currentWaypoint)
             {
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
-                    yield break;
+                    yield break; ;
                 }
                 currentWaypoint = path[targetIndex];
             }
@@ -70,7 +83,8 @@ public class Unit : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
             state = character.State;
             state.Walk();
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, character.Speed * Time.deltaTime);
+            Debug.Log(Vector3.MoveTowards(transform.position, currentWaypoint, 0.000001f * Time.deltaTime));
+            controller.Move(Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed) * Time.deltaTime);
 
             yield return null;
 

@@ -12,6 +12,7 @@ public class Player: MonoBehaviour {
     private float angle;
 
     private Character player;
+    private CharacterController controller;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class Player: MonoBehaviour {
         rotationSpeed = 0;
         directionVector = Vector3.zero;
         player = GetComponent<Character>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -98,9 +100,22 @@ public class Player: MonoBehaviour {
         {
             rotationSpeed = 0;
         }
+        float equis = 0;
+        float ii = 0;
+        float zeta = 0;
+        if (directionVector.x != 0)
+            equis = directionVector.x / directionVector.x;
+        if (directionVector.y != 0)
+            ii = directionVector.y / directionVector.y;
+        if (directionVector.z != 0)
+            zeta = directionVector.z / directionVector.z;
 
-        trans.Translate(0, 0, 1 * player.Speed * Time.deltaTime);
-        trans.Rotate(0, Time.deltaTime * rotationSpeed, 0);
+        //directionVector = new Vector3( equis, ii, zeta);
+        directionVector = Vector3.ClampMagnitude(directionVector, player.Speed);
+        controller.Move(directionVector * Time.deltaTime);
+
+        //trans.Translate(0, 0, 1 * player.Speed * Time.deltaTime);
+        trans.Rotate(0, Time.deltaTime * rotationSpeed * player.Speed * 0.7f, 0);
 
     }
 }
