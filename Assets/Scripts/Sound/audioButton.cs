@@ -9,6 +9,6 @@ public class audioButton : MonoBehaviour {
 
 	// Update is called once per frame
 	public void Play () {
-		SoundManager.PlayUISound (SoundCte.SoundCte.loadAudioClip(SoundCte.SoundCte.CLICK_SOUND), 1.0f);
+		SoundManager.PlayUISound (SoundCte.SoundCte.LoadAudioClip(SoundCte.SoundCte.CLICK_SOUND), 1.0f);
 		}
 }

@@ -54,7 +54,7 @@ namespace SoundCte{
 		public const string MUSICA6_SOUND = "Music/Music6";
 
 
-		public static AudioClip loadAudioClip (string constantSoundName){
+		public static AudioClip LoadAudioClip (string constantSoundName){
 			return Resources.Load<AudioClip>("Sound/"+constantSoundName);
 		}
 	}
