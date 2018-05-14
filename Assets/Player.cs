@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EazyTools.SoundManager;
+using SoundCte;
+using SoundUtil;
 
 public class Player: MonoBehaviour {
 
@@ -14,8 +17,23 @@ public class Player: MonoBehaviour {
     public Character player;
     private CharacterController controller;
 
+	// AUDIO
+	private int walkingSlow = -1;
+	private Audio audioWalkingSlow;
+	private int walkingFast = -1;
+	private Audio audioWalkingFast;
+	private AudioClip walkingSandFast;
+	private AudioClip walkingSandSlow;
+	// AUDIO
+
     private void Start()
     {
+		// AUDIO
+		SoundManager.PlaySound (SoundCte.SoundCte.LoadAudioClip (SoundCte.SoundCte.EFFECT_WALKING_SAND_FAST), 0.0f, false, null);
+		walkingSandFast = SoundCte.SoundCte.LoadAudioClip (SoundCte.SoundCte.EFFECT_WALKING_SAND_FAST);
+		walkingSandSlow = SoundCte.SoundCte.LoadAudioClip (SoundCte.SoundCte.EFFECT_WALKING_SAND_SLOW);
+		// AUDIO
+
         shiftIsPressed = false;
         rotationSpeed = 0;
         directionVector = Vector3.zero;
@@ -58,21 +76,33 @@ public class Player: MonoBehaviour {
 
         if (shiftIsPressed && directionVector != Vector3.zero)
         {
+			// AUDIO
+			CheckAudioRun ();
+			// AUDIO
             player.State.Run();
         }
 
         if (!shiftIsPressed && directionVector != Vector3.zero)
         {
+			// AUDIO
+			CheckAudioWalk ();
+			// AUDIO
             player.State.Walk();
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
+			// AUDIO
+			SoundUtil.SoundUtil.PlayRandomSwordMiss();
+			// AUDIO
             player.State.Attack();
         }
 
         if (directionVector == Vector3.zero)
         {
+			// AUDIO
+			CheckAudioStand ();
+			// AUDIO
             player.State.Stand();
         }
 
@@ -118,4 +148,45 @@ public class Player: MonoBehaviour {
         trans.Rotate(0, Time.deltaTime * rotationSpeed * player.Speed * 0.7f, 0);
 
     }
+
+	private void CheckAudioWalk(){
+		// AUDIO
+		audioWalkingFast = SoundManager.GetAudio (walkingFast);
+		if (audioWalkingFast != null) {
+			audioWalkingFast.Stop();
+		}
+		audioWalkingSlow = SoundManager.GetAudio (walkingSlow);
+		if (audioWalkingSlow == null) {
+			walkingSlow = SoundManager.PlaySound (walkingSandSlow, 1.0f, true, null);
+		} else if (!audioWalkingSlow.playing) {
+			walkingSlow = SoundManager.PlaySound (walkingSandSlow, 1.0f, true, null);
+		}
+		// AUDIO
+	}
+
+	private void CheckAudioRun(){
+		// AUDIO
+		audioWalkingSlow = SoundManager.GetAudio (walkingSlow);
+		if (audioWalkingSlow != null) {
+			audioWalkingSlow.Stop();
+		}
+		audioWalkingFast = SoundManager.GetAudio (walkingFast);
+		if (audioWalkingFast == null) {
+			walkingFast = SoundManager.PlaySound (walkingSandFast, 1.0f, true, null);
+		} else if (!audioWalkingFast.playing) {
+			walkingFast = SoundManager.PlaySound (walkingSandFast, 1.0f, true, null);
+		}
+		// AUDIO
+	}
+
+	private void CheckAudioStand(){
+		// AUDIO
+		if (audioWalkingFast != null) {
+			audioWalkingFast.Stop ();
+		}
+		if (audioWalkingSlow != null) {
+			audioWalkingSlow.Stop ();
+		}
+		// AUDIO
+	}
 }

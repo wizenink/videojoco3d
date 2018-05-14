@@ -8,7 +8,7 @@ public class audioMenuBackground : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SoundManager.PlayMusic (SoundCte.SoundCte.loadAudioClip (SoundCte.SoundCte.MUSICA5_SOUND), 0.8f, true, true);
+		SoundManager.PlayMusic (SoundCte.SoundCte.LoadAudioClip (SoundCte.SoundCte.MUSICA5_SOUND), 0.8f, true, true);
 	}
 
 	public void StopBackGround () {

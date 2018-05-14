@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoundUtil;
 
 public class WeaponCollition : MonoBehaviour {
 
@@ -9,8 +10,13 @@ public class WeaponCollition : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (parent != collision.gameObject && (parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
-            collision.gameObject.SendMessage("GetHit");
+		if (parent != collision.gameObject && (parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
+		{
+			// AUDIO
+			SoundUtil.SoundUtil.PlayRandomSkeletonHit();
+			// AUDIO
+			collision.gameObject.SendMessage("GetHit");
+		}
 
     }
     private void OnCollisionStay(Collision collision)
