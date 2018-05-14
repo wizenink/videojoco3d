@@ -73,6 +73,87 @@ ModelImporter:
     100130: RThigh
     100132: RToe
     100134: RToe_end
+    100136: 2018-05-07_22-16-07
+    100138: Camera
+    100140: Chest 1
+    100142: Head 1
+    100144: Head_end 1
+    100146: Head_end_end
+    100148: Hip 1
+    100150: Lamp
+    100152: LClavicle 1
+    100154: LFinger0 1
+    100156: LFinger01 1
+    100158: LFinger02 1
+    100160: LFinger02_end 1
+    100162: LFinger02_end_end
+    100164: LFinger1 1
+    100166: LFinger11 1
+    100168: LFinger12 1
+    100170: LFinger12_end 1
+    100172: LFinger12_end_end
+    100174: LFinger2 1
+    100176: LFinger21 1
+    100178: LFinger22 1
+    100180: LFinger22_end 1
+    100182: LFinger22_end_end
+    100184: LFinger3 1
+    100186: LFinger31 1
+    100188: LFinger32 1
+    100190: LFinger32_end 1
+    100192: LFinger32_end_end
+    100194: LFinger4 1
+    100196: LFinger41 1
+    100198: LFinger42 1
+    100200: LFinger42_end 1
+    100202: LFinger42_end_end
+    100204: LFoot 1
+    100206: LForearm 1
+    100208: LHand 1
+    100210: LowerSpine 1
+    100212: LShin 1
+    100214: LShoulder 1
+    100216: LThigh 1
+    100218: LToe 1
+    100220: LToe_end 1
+    100222: LToe_end_end
+    100224: MiddleSpine 1
+    100226: Neck 1
+    100228: RClavicle 1
+    100230: RFinger0 1
+    100232: RFinger01 1
+    100234: RFinger02 1
+    100236: RFinger02_end 1
+    100238: RFinger02_end_end
+    100240: RFinger1 1
+    100242: RFinger11 1
+    100244: RFinger12 1
+    100246: RFinger12_end 1
+    100248: RFinger12_end_end
+    100250: RFinger2 1
+    100252: RFinger21 1
+    100254: RFinger22 1
+    100256: RFinger22_end 1
+    100258: RFinger22_end_end
+    100260: RFinger3 1
+    100262: RFinger31 1
+    100264: RFinger32 1
+    100266: RFinger32_end 1
+    100268: RFinger32_end_end
+    100270: RFinger4 1
+    100272: RFinger41 1
+    100274: RFinger42 1
+    100276: RFinger42_end 1
+    100278: RFinger42_end_end
+    100280: RFoot 1
+    100282: RForearm 1
+    100284: RHand 1
+    100286: RShin 1
+    100288: RShoulder 1
+    100290: RThigh 1
+    100292: RToe 1
+    100294: RToe_end 1
+    100296: RToe_end_end
     400000: 2018-05-07_21-33-30
     400002: Chest
     400004: Head
@@ -141,6 +222,88 @@ ModelImporter:
     400130: RThigh
     400132: RToe
     400134: RToe_end
+    400136: 2018-05-07_22-16-07
+    400138: Camera
+    400140: Chest 1
+    400142: Head 1
+    400144: Head_end 1
+    400146: Head_end_end
+    400148: Hip 1
+    400150: Lamp
+    400152: LClavicle 1
+    400154: LFinger0 1
+    400156: LFinger01 1
+    400158: LFinger02 1
+    400160: LFinger02_end 1
+    400162: LFinger02_end_end
+    400164: LFinger1 1
+    400166: LFinger11 1
+    400168: LFinger12 1
+    400170: LFinger12_end 1
+    400172: LFinger12_end_end
+    400174: LFinger2 1
+    400176: LFinger21 1
+    400178: LFinger22 1
+    400180: LFinger22_end 1
+    400182: LFinger22_end_end
+    400184: LFinger3 1
+    400186: LFinger31 1
+    400188: LFinger32 1
+    400190: LFinger32_end 1
+    400192: LFinger32_end_end
+    400194: LFinger4 1
+    400196: LFinger41 1
+    400198: LFinger42 1
+    400200: LFinger42_end 1
+    400202: LFinger42_end_end
+    400204: LFoot 1
+    400206: LForearm 1
+    400208: LHand 1
+    400210: LowerSpine 1
+    400212: LShin 1
+    400214: LShoulder 1
+    400216: LThigh 1
+    400218: LToe 1
+    400220: LToe_end 1
+    400222: LToe_end_end
+    400224: MiddleSpine 1
+    400226: Neck 1
+    400228: RClavicle 1
+    400230: RFinger0 1
+    400232: RFinger01 1
+    400234: RFinger02 1
+    400236: RFinger02_end 1
+    400238: RFinger02_end_end
+    400240: RFinger1 1
+    400242: RFinger11 1
+    400244: RFinger12 1
+    400246: RFinger12_end 1
+    400248: RFinger12_end_end
+    400250: RFinger2 1
+    400252: RFinger21 1
+    400254: RFinger22 1
+    400256: RFinger22_end 1
+    400258: RFinger22_end_end
+    400260: RFinger3 1
+    400262: RFinger31 1
+    400264: RFinger32 1
+    400266: RFinger32_end 1
+    400268: RFinger32_end_end
+    400270: RFinger4 1
+    400272: RFinger41 1
+    400274: RFinger42 1
+    400276: RFinger42_end 1
+    400278: RFinger42_end_end
+    400280: RFoot 1
+    400282: RForearm 1
+    400284: RHand 1
+    400286: RShin 1
+    400288: RShoulder 1
+    400290: RThigh 1
+    400292: RToe 1
+    400294: RToe_end 1
+    400296: RToe_end_end
+    2000000: Camera
     2100000: 08 - Default.003
     2100002: 07 - Default.003
     2100004: 'Material #4.003'
@@ -198,6 +361,7 @@ ModelImporter:
     7400098: Stand
     7400100: Walk
     9500000: //RootNode
+    10800000: Lamp
     13700000: Object012
   externalObjects: {}
   materials:
@@ -229,12 +393,12 @@ ModelImporter:
     - serializedVersion: 16
       name: Run
       takeName: 2018-05-07_21-33-30|2018-05-07_21-33-30
-      firstFrame: 360
-      lastFrame: 452
+      firstFrame: 400
+      lastFrame: 425
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 10
+      cycleOffset: 5
       loop: 0
       hasAdditiveReferencePose: 1
       loopTime: 1
@@ -253,7 +417,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 365
+      additiveReferencePoseFrame: 400
     - serializedVersion: 16
       name: 2018-05-07_21-33-30|Circle003.001|Take 001|BaseLayer
       takeName: 2018-05-07_21-33-30|Circle003.001|Take 001|BaseLayer
@@ -1601,12 +1765,12 @@ ModelImporter:
     - serializedVersion: 16
       name: Stand
       takeName: 2018-05-07_21-33-30|2018-05-07_21-33-30
-      firstFrame: 5
+      firstFrame: 10
       lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 10
+      cycleOffset: 20
       loop: 0
       hasAdditiveReferencePose: 1
       loopTime: 1
@@ -1629,12 +1793,12 @@ ModelImporter:
     - serializedVersion: 16
       name: Walk
       takeName: 2018-05-07_21-33-30|2018-05-07_21-33-30
-      firstFrame: 189
+      firstFrame: 195
       lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 10
+      cycleOffset: 20
       loop: 0
       hasAdditiveReferencePose: 1
       loopTime: 1
@@ -1653,7 +1817,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 190
+      additiveReferencePoseFrame: 235
     isReadable: 1
   meshes:
     lODScreenPercentages: []

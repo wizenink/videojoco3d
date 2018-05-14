@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour
     int targetIndex;
     Vector3 lastPos;
     int counter;
+    public Grid grid;
     private CharacterController controller;
     
 
@@ -27,11 +28,14 @@ public class Unit : MonoBehaviour
         counter = 0;
         controller = GetComponent<CharacterController>();
         
+        
     }
 
     private void Update()
     {
-        if (counter == 10) {
+
+
+        if (counter == 100) {
             Vector3 targetPos = target.position;
             if (lastPos != targetPos)
             {
@@ -46,13 +50,14 @@ public class Unit : MonoBehaviour
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
+
         if (pathSuccessful)
         {
             path = newPath;
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
-        }
+        } 
     }
 
     IEnumerator FollowPath()
@@ -65,8 +70,10 @@ public class Unit : MonoBehaviour
 
         while (true)
         {
-            
-            if (transform.position == currentWaypoint)
+            Debug.Log("pimba");
+            Debug.Log(grid.NodeFromWorldPoint(transform.position));
+            Debug.Log(grid.NodeFromWorldPoint(currentWaypoint));
+            if (grid.NodeFromWorldPoint(transform.position) == grid.NodeFromWorldPoint(currentWaypoint))
             {
                 targetIndex++;
                 if (targetIndex >= path.Length)
@@ -85,7 +92,10 @@ public class Unit : MonoBehaviour
             state = character.State;
             state.Walk();
 
-            controller.Move(Vector3.ClampMagnitude(new Vector3(direction.x, Physics.gravity.y, direction.z), character.Speed) * Time.deltaTime);
+            Vector3 normalMovement = new Vector3(direction.x, 0.0f, direction.z).normalized * character.Speed;
+
+            controller.Move(normalMovement * Time.deltaTime);
+            controller.Move(new Vector3(0.0f,Physics.gravity.y,0.0f));
             
             Debug.DrawLine(transform.position, transform.position + Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed), Color.red);
 

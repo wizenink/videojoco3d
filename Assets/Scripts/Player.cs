@@ -18,6 +18,8 @@ public class Player: MonoBehaviour {
     public Character player;
     private CharacterController controller;
 
+    private bool isAttacking;
+
 	// AUDIO
 	private int walkingSlow = -1;
 	private Audio audioWalkingSlow;
@@ -42,6 +44,12 @@ public class Player: MonoBehaviour {
         controller = GetComponent<CharacterController>();
     }
 
+
+    private void LateUpdate()
+    {
+        if(isAttacking)
+            transform.rotation = Quaternion.LookRotation(cameraPosition.transform.forward,Vector3.up);
+    }
     // Update is called once per frame
     void Update () {
 
@@ -93,10 +101,18 @@ public class Player: MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-			// AUDIO
-			SoundUtil.SoundUtil.PlayRandomSwordMiss();
-			// AUDIO
+            // AUDIO
+            SoundUtil.SoundUtil.PlayRandomSwordMiss();
+            // AUDIO
             player.State.Attack();
+
+            angle = Vector3.SignedAngle(this.transform.TransformDirection(Vector3.forward), direction, Vector3.up);
+            //cameraPosition.transform.forward;
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
         }
 
         if (directionVector == Vector3.zero)
@@ -132,11 +148,12 @@ public class Player: MonoBehaviour {
             rotationSpeed = 0;
         }
 
-        
-        directionVector = Vector3.ClampMagnitude(directionVector, player.Speed);
+        Vector3 normalMovement = new Vector3(direction.x, 0.0f, direction.z).normalized * player.Speed;
+        directionVector = normalMovement;
         controller.Move(directionVector * Time.deltaTime);
         controller.Move(Physics.gravity);
-        //trans.Translate(0, 0, 1 * player.Speed * Time.deltaTime);
+
+        
         trans.Rotate(0, Time.deltaTime * rotationSpeed * player.Speed * 0.7f, 0);
 
     }
