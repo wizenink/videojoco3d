@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player: MonoBehaviour {
 
     public GameObject cameraPosition;
+    
     private bool shiftIsPressed; // :)
 
     private float rotationSpeed;
@@ -100,20 +101,11 @@ public class Player: MonoBehaviour {
         {
             rotationSpeed = 0;
         }
-        float equis = 0;
-        float ii = 0;
-        float zeta = 0;
-        if (directionVector.x != 0)
-            equis = directionVector.x / directionVector.x;
-        if (directionVector.y != 0)
-            ii = directionVector.y / directionVector.y;
-        if (directionVector.z != 0)
-            zeta = directionVector.z / directionVector.z;
 
-        //directionVector = new Vector3( equis, ii, zeta);
+        
         directionVector = Vector3.ClampMagnitude(directionVector, player.Speed);
         controller.Move(directionVector * Time.deltaTime);
-
+        controller.Move(Physics.gravity);
         //trans.Translate(0, 0, 1 * player.Speed * Time.deltaTime);
         trans.Rotate(0, Time.deltaTime * rotationSpeed * player.Speed * 0.7f, 0);
 

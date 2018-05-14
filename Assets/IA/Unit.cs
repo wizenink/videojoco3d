@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     Vector3 lastPos;
     int counter;
     private CharacterController controller;
-
+    
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class Unit : MonoBehaviour
         PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
         counter = 0;
         controller = GetComponent<CharacterController>();
-
+        
     }
 
     private void Update()
@@ -78,14 +78,15 @@ public class Unit : MonoBehaviour
 
             
             Vector3 direction = currentWaypoint - this.transform.position;
+            direction.y = 0;
             state = character.State;
             state.Run();
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
             state = character.State;
             state.Walk();
-            
-            controller.Move(Vector3.ClampMagnitude(Vector3.Cross(direction,(Vector3.right+Vector3.forward)), character.Speed) * Time.deltaTime);
 
+            controller.Move(Vector3.ClampMagnitude(new Vector3(direction.x, Physics.gravity.y, direction.z), character.Speed) * Time.deltaTime);
+            
             Debug.DrawLine(transform.position, transform.position + Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed), Color.red);
 
             yield return null;
