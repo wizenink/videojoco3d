@@ -11,7 +11,7 @@ public class Player: MonoBehaviour {
     private Vector3 directionVector;
     private float angle;
 
-    private Character player;
+    public Character player;
     private CharacterController controller;
 
     private void Start()
@@ -19,7 +19,7 @@ public class Player: MonoBehaviour {
         shiftIsPressed = false;
         rotationSpeed = 0;
         directionVector = Vector3.zero;
-        player = GetComponent<Character>();
+        //player = GetComponent<Character>();
         controller = GetComponent<CharacterController>();
     }
 

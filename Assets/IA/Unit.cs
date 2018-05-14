@@ -83,8 +83,10 @@ public class Unit : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
             state = character.State;
             state.Walk();
-            Debug.Log(Vector3.MoveTowards(transform.position, currentWaypoint, 0.000001f * Time.deltaTime));
-            controller.Move(Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed) * Time.deltaTime);
+            
+            controller.Move(Vector3.ClampMagnitude(Vector3.Cross(direction,(Vector3.right+Vector3.forward)), character.Speed) * Time.deltaTime);
+
+            Debug.DrawLine(transform.position, transform.position + Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed), Color.red);
 
             yield return null;
 
