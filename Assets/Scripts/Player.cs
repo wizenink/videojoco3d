@@ -48,7 +48,7 @@ public class Player: MonoBehaviour {
     private void LateUpdate()
     {
         if(isAttacking)
-            transform.rotation = Quaternion.LookRotation(cameraPosition.transform.forward,Vector3.up);
+            transform.rotation = Quaternion.LookRotation(new Vector3(cameraPosition.transform.forward.x,0.0f, cameraPosition.transform.forward.z),Vector3.up);
     }
     // Update is called once per frame
     void Update () {
@@ -148,8 +148,8 @@ public class Player: MonoBehaviour {
             rotationSpeed = 0;
         }
 
-        Vector3 normalMovement = new Vector3(direction.x, 0.0f, direction.z).normalized * player.Speed;
-        directionVector = normalMovement;
+        
+        directionVector = directionVector.normalized * player.Speed;
         controller.Move(directionVector * Time.deltaTime);
         controller.Move(Physics.gravity);
 
