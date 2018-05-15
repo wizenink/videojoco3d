@@ -17,7 +17,7 @@ public class DamageBehaviour : StateMachineBehaviour {
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        Character character = animator.GetComponent<Character>(); // Getting the characte
+        Character character = animator.GetComponent<Character>(); // Getting the character
         if (!animator.GetBool("hitInDamage")) // The character was not damaged in animation time
         {
             character.State = new StandState(animator, character); // Change character state to default state

@@ -13,7 +13,7 @@ public class DamageState : CharacterState
         SetAnimationParams();
         comboedHitsCounter = 1;
         character.HealthPoints --;
-        animationPlaying = 1;
+        animationPlaying = 0;
     }
 
     // Methods where the state does nothing //
@@ -57,6 +57,7 @@ public class DamageState : CharacterState
         animationPlaying--;
         if (animationPlaying <= 0)
         {
+            animator.SetBool("hitInDamage", false);
             character.State = new StandState(animator, character);
         }
     }

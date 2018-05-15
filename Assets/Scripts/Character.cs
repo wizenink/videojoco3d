@@ -26,6 +26,8 @@ public class Character : MonoBehaviour {
     [Tooltip("Number of hits to produce knockback")]
     protected int comboedHits;
 
+    public WeaponCollition weapon;
+
     // ---------------- //
 
     void Start()

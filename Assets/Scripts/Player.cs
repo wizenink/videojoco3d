@@ -113,7 +113,6 @@ public class Player: MonoBehaviour {
             //cameraPosition.transform.forward;
             isAttacking = true;
 
-            weaponCollition.StartCollitionCheck(0.5F);
         }
         else
         {

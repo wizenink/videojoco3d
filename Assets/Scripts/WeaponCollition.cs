@@ -10,10 +10,18 @@ public class WeaponCollition : MonoBehaviour {
     BoxCollider coll;
 
     float duration;
+    float delay;
 
     private void Update()
     {
         duration -= Time.deltaTime;
+        
+        if (duration <= delay)
+        {
+            Debug.Log(Time.deltaTime);
+            coll.enabled = true;
+        }
+
         if (duration <= 0){
             coll.enabled = false;
         }
@@ -25,10 +33,10 @@ public class WeaponCollition : MonoBehaviour {
         coll.enabled = false;
     }
 
-    public void StartCollitionCheck(float dur)
+    public void StartCollitionCheck(float dur, float del)
     {
-        coll.enabled = true;
         duration = dur;
+        delay = del;
     }
 
     void OnTriggerEnter(Collider collision)
