@@ -7,10 +7,34 @@ public class WeaponCollition : MonoBehaviour {
 
     public GameObject parent;
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    BoxCollider coll;
 
-		if (parent != collision.gameObject && (parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
+    float duration;
+
+    private void Update()
+    {
+        duration -= Time.deltaTime;
+        if (duration <= 0){
+            coll.enabled = false;
+        }
+    }
+
+    private void Awake()
+    {
+        coll = GetComponent<BoxCollider>();
+        coll.enabled = false;
+    }
+
+    public void StartCollitionCheck(float dur)
+    {
+        coll.enabled = true;
+        duration = dur;
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("atacameeeeee");
+		if (collision.gameObject.tag.Equals("enemy") &&(parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
 		{
 			// AUDIO
 			SoundUtil.SoundUtil.PlayRandomSkeletonHit();
@@ -21,10 +45,10 @@ public class WeaponCollition : MonoBehaviour {
     }
     private void OnCollisionStay(Collision collision)
     {
-        
+      
     }
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("exit");
+
     }
 }

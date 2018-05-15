@@ -18,6 +18,8 @@ public class Player: MonoBehaviour {
     public Character player;
     private CharacterController controller;
 
+    public WeaponCollition weaponCollition;
+
     private bool isAttacking;
 
 	// AUDIO
@@ -42,6 +44,7 @@ public class Player: MonoBehaviour {
         directionVector = Vector3.zero;
         //player = GetComponent<Character>();
         controller = GetComponent<CharacterController>();
+
     }
 
 
@@ -109,6 +112,8 @@ public class Player: MonoBehaviour {
             angle = Vector3.SignedAngle(this.transform.TransformDirection(Vector3.forward), direction, Vector3.up);
             //cameraPosition.transform.forward;
             isAttacking = true;
+
+            weaponCollition.StartCollitionCheck(0.5F);
         }
         else
         {

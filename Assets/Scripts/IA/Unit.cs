@@ -40,7 +40,7 @@ public class Unit : MonoBehaviour
             if (lastPos != targetPos)
             {
                 PathRequestManager.RequestPath(transform.position, targetPos, OnPathFound);
-                Debug.Log("cheguei aqui");
+                
             }
             lastPos = targetPos;
             counter = 0;
@@ -70,9 +70,9 @@ public class Unit : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("pimba");
-            Debug.Log(grid.NodeFromWorldPoint(transform.position));
-            Debug.Log(grid.NodeFromWorldPoint(currentWaypoint));
+            //Debug.Log("pimba");
+            //Debug.Log(grid.NodeFromWorldPoint(transform.position));
+            //Debug.Log(grid.NodeFromWorldPoint(currentWaypoint));
             if (grid.NodeFromWorldPoint(transform.position) == grid.NodeFromWorldPoint(currentWaypoint))
             {
                 targetIndex++;
