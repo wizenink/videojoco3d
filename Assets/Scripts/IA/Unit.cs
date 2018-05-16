@@ -85,18 +85,22 @@ public class Unit : MonoBehaviour
 
             
             Vector3 direction = currentWaypoint - this.transform.position;
+			//Vector3 direction_player = target.position - this.transform.position;
             direction.y = 0;
-            state = character.State;
-            state.Run();
+
+			character.State.Walk ();
+
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
-            state = character.State;
-            state.Walk();
+
+
 
             Vector3 normalMovement = new Vector3(direction.x, 0.0f, direction.z).normalized * character.Speed;
 
             controller.Move(normalMovement * Time.deltaTime);
             controller.Move(new Vector3(0.0f,Physics.gravity.y,0.0f));
-            
+			if (Vector3.Distance (target.position, this.transform.position) < 2) {
+				character.State.Attack ();
+			}	
             Debug.DrawLine(transform.position, transform.position + Vector3.ClampMagnitude(new Vector3(direction.x, 0.0f, direction.z), character.Speed), Color.red);
 
             yield return null;

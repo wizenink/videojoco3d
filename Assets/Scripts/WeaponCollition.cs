@@ -12,13 +12,14 @@ public class WeaponCollition : MonoBehaviour {
     float duration;
     float delay;
 
+
     private void Update()
     {
         duration -= Time.deltaTime;
         
         if (duration <= delay)
         {
-            Debug.Log(Time.deltaTime);
+           // Debug.Log(Time.deltaTime);
             coll.enabled = true;
         }
 
@@ -41,22 +42,17 @@ public class WeaponCollition : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("atacameeeeee");
-		if (collision.gameObject.tag.Equals("enemy") &&(parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
+		string tag;
+		if (parent.tag.Equals("Player"))
+			tag = "enemy";
+		else tag = "Player";
+		if (collision.gameObject.tag.Equals(tag) &&(parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
 		{
 			// AUDIO
 			SoundUtil.SoundUtil.PlayRandomSkeletonHit();
 			// AUDIO
 			collision.gameObject.SendMessage("GetHit");
 		}
-
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-      
-    }
-    private void OnCollisionExit(Collision collision)
-    {
 
     }
 }

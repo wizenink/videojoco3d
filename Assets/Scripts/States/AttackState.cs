@@ -8,7 +8,7 @@ public class AttackState : CharacterState
     {
         character.Speed = 0.0f; // You cant move while attacking
         animator.SetBool("attack", true); // Set true to activate the animation
-        character.weapon.StartCollitionCheck(1.0f,0.5f);
+        character.weapon.StartCollitionCheck(1.2f,0.5f);
     }
 
     // Methods where the state does nothing //

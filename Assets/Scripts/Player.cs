@@ -4,6 +4,7 @@ using UnityEngine;
 using EazyTools.SoundManager;
 using SoundCte;
 using SoundUtil;
+using UnityEngine.SceneManagement;
 
 public class Player: MonoBehaviour {
 
@@ -48,6 +49,11 @@ public class Player: MonoBehaviour {
     }
 
 
+	public void GetHit(){
+		player.GetHit ();
+	}
+
+
     private void LateUpdate()
     {
         if(isAttacking)
@@ -55,7 +61,7 @@ public class Player: MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
+		Debug.Log (player.HealthPoints);
         Vector3 direction = Vector3.ProjectOnPlane(this.transform.position - cameraPosition.transform.position, transform.TransformDirection(Vector3.up));
 
         float h = Input.GetAxis("Horizontal");
@@ -67,6 +73,11 @@ public class Player: MonoBehaviour {
         Vector3 directionVectorV = direction * v;
 
         directionVector = directionVectorH + directionVectorV;
+
+		if (player.HealthPoints <= 0) 
+		{
+			SceneManager.LoadScene ("DeathMenu");
+		}
 
         if (false)
         {
