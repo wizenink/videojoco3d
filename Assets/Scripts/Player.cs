@@ -48,6 +48,11 @@ public class Player: MonoBehaviour {
     }
 
 
+	public void GetHit(){
+		player.GetHit ();
+	}
+
+
     private void LateUpdate()
     {
         if(isAttacking)
@@ -55,7 +60,7 @@ public class Player: MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
+		Debug.Log (player.HealthPoints);
         Vector3 direction = Vector3.ProjectOnPlane(this.transform.position - cameraPosition.transform.position, transform.TransformDirection(Vector3.up));
 
         float h = Input.GetAxis("Horizontal");

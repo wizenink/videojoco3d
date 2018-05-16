@@ -19,7 +19,7 @@ public class WeaponCollition : MonoBehaviour {
         
         if (duration <= delay)
         {
-            Debug.Log(Time.deltaTime);
+           // Debug.Log(Time.deltaTime);
             coll.enabled = true;
         }
 
