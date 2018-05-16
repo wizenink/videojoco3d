@@ -10,6 +10,7 @@ public class Level1Script : MonoBehaviour {
 	public bool paused = false;
 	// Use this for initialization
 	void Start () {
+		LoadSceneOnClick.currentLevel = "level1";
 		if (GameObject.Find ("EmptyPlayerCompleto") != null) {
 			player = GameObject.Find ("EmptyPlayerCompleto").GetComponent <Player> ();
 		}

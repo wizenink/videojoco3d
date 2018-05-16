@@ -4,6 +4,7 @@ using UnityEngine;
 using EazyTools.SoundManager;
 using SoundCte;
 using SoundUtil;
+using UnityEngine.SceneManagement;
 
 public class Player: MonoBehaviour {
 
@@ -72,6 +73,11 @@ public class Player: MonoBehaviour {
         Vector3 directionVectorV = direction * v;
 
         directionVector = directionVectorH + directionVectorV;
+
+		if (player.HealthPoints <= 0) 
+		{
+			SceneManager.LoadScene ("DeathMenu");
+		}
 
         if (false)
         {
