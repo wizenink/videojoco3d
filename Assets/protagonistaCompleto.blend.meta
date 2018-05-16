@@ -249,6 +249,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material__4_003
+    second: {fileID: 2100000, guid: 8b1fc8ed86c564f6cabe23eb6e32d923, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: dgjs_003
     second: {fileID: 2100006, guid: 2ebf196ddf257c24db277620cd3867c9, type: 3}
   materials:
