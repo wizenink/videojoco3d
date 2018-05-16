@@ -55,12 +55,4 @@ public class WeaponCollition : MonoBehaviour {
 		}
 
     }
-    private void OnCollisionStay(Collision collision)
-    {
-      
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-
-    }
 }
