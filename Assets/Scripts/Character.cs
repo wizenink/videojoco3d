@@ -34,13 +34,26 @@ public class Character : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         state = new StandState(animator, this);
+		if (this.gameObject.name == "Enemy") 
+		{
+			Level1Script level1 = FindObjectOfType<Level1Script> ();
+			level1.enemyNumber++;
+		}
     }
 
 
     private void Update()
     {
-        if (this.gameObject.name == "Enemy")
-            Debug.Log(this.state);
+		if (this.gameObject.name == "Enemy") 
+		{
+			if (healthPoints <= 0) 
+			{
+				Destroy(this.gameObject);
+				Level1Script level1 = FindObjectOfType<Level1Script> ();
+				level1.enemyNumber--;
+			}
+			Debug.Log(this.state);
+		}
        
     }
 
