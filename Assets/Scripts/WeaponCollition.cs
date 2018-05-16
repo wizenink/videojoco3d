@@ -41,8 +41,8 @@ public class WeaponCollition : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("atacameeeeee");
-		if (collision.gameObject.tag.Equals("enemy") &&(parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
+
+		if (collision.gameObject.tag.Equals("enemy") && (parent.GetComponent<Character>().State.GetType() == typeof(AttackState)))
 		{
 			// AUDIO
 			SoundUtil.SoundUtil.PlayRandomSkeletonHit();
