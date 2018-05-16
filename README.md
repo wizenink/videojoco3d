@@ -1,6 +1,6 @@
 # videojoco3d
 
-## Estructura de Carpetas:
+## Estructura de Carpetas
 ### Assets
  - Mecanim: Animation controllers
 - Prefabs
@@ -12,3 +12,6 @@
 
 ### Game
 - juego con .exe
+
+## Gameplay del juego
+- https://drive.google.com/drive/folders/1PiJOtGCT0Yr9UT9wpvHCCcskSFpTA1nL?usp=sharing
